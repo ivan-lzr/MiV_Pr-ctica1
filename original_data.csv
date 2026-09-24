@@ -1,4 +1,4 @@
-Year;Population;Total Murders;Murders Rate per 100,000;Total by Firearm;Total Handgun;Total Other Firearm;Total Percent by Firearms;Percent by Handguns;Percent by Other Firearms; Total by Firearm % change; Population % Change
+Year;Population;Total Murders;Murders Rate per 100,000;Total by Firearm;Total Handgun;Total Other Firearm;Total Percent by Firearms;Percent by Handguns;Percent by Other Firearms;Total by Firearm Percentage change;Population Percentage Change
 1971;7,041,074;932;13.2;628;509;119;67.4;54.6;12.8;--;--
 1972;7,441,545;924;12.4;642;539;103;69.5;58.3;11.1;2.2;5.7
 1973;7,845,092;1,182;15.1;769;637;132;65.1;53.9;11.2;19.8;5.4
