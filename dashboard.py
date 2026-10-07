@@ -3,7 +3,6 @@ import pandas as pd
 import plotly.graph_objects as go
 
 st.set_page_config(page_title="Florida Gun Violence Dashboard", layout="wide")
-
 st.markdown("""<style>.block-container {padding-top: 1rem; padding-bottom: 0rem;} header {visibility: hidden;} </style>""", unsafe_allow_html=True)
 
 @st.cache_data
@@ -17,7 +16,7 @@ average_percentage = df["Total Percent by Firearms"].mean()
 
 col_title, col_selector = st.columns([3, 1])
 with col_title:
-    st.markdown("<h3 style='margin-bottom: 0px;'> Florida Murder by Firearm Rates (Stand your Ground)</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='margin-bottom: 0px;'> Florida Murder by Firearm Rates ('Stand your Ground' law (2005))</h3>", unsafe_allow_html=True)
 
 with col_selector:
     years  = df["Year"].unique()
@@ -46,7 +45,7 @@ num4.metric(label="% Murders by firearm",
 st.markdown("<hr style='margin: 0.5em 0px; border: 1px solid #e6e6e6;'>", unsafe_allow_html=True)
 
 GRAPHIC = 300
-MARGINS = dict(l=10, r=10, t=30, b=30)
+MARGINS = dict(l=10, r=30, t=30, b=30)
 
 row1_col1, row1_col2 = st.columns(2)
 
