@@ -82,7 +82,7 @@ with row2_col1:
     fig3 = go.Figure()
     fig3.add_trace(go.Scatter(x=df["Year"], y=df["Population"], mode='lines+markers', line=dict(width=3, color="#6593F5", shape='spline'), marker=dict(size=8, color="#81A4F0"), name="Population", hovertemplate="Year: %{x}<br>Population: %{y:,.0f}<extra></extra>"))
     fig3.update_layout(title="Population Growth in Florida", height=GRAPHIC, margin=MARGINS, paper_bgcolor="#FFFFFF", plot_bgcolor="#FFFFFF", template="plotly_white", font=dict(color="#000000"), showlegend=False,  xaxis_title="Year", yaxis_title="Population (Millions)")
-    fig3.update_xaxes(tickvals=[1990, 2000, 2010])
+    fig3.update_xaxes(tickvals=[1990, 1995, 2000, 2005, 2010, 2015])
 
     fig3.update_traces(marker_line_width=bar_selected, marker_line_color=edge_colors)
     st.plotly_chart(fig3, use_container_width=True, theme=None)
