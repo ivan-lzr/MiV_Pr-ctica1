@@ -3,21 +3,7 @@ import pandas as pd
 import plotly.graph_objects as go
 
 st.set_page_config(page_title="Florida Gun Violence Dashboard", layout="wide")
-st.markdown("""
-    <style>
-        .block-container {padding-top: 1rem; padding-bottom: 0rem;}
-        header {visibility: hidden;}
-        .stApp { background-color: #FFFFFF; }
-        
-        [data-testid="stMetricLabel"] { color: #000000 !important; }
-        [data-testid="stMetricValue"] { color: #000000 !important; }
-        
-        .dashboard-title {
-            color: #000000 !important;
-            margin-bottom: 0px;
-        }
-    </style>
-""", unsafe_allow_html=True)
+st.markdown("""<style>.block-container {padding-top: 1rem; padding-bottom: 0rem;} header {visibility: hidden;} .stApp { background-color: #FFFFFF; } [data-testid="stMetricLabel"] { color: #000000 !important; } [data-testid="stMetricValue"] { color: #000000 !important; } .dashboard-title { color: #000000 !important; margin-bottom: 0px;} </style> """, unsafe_allow_html=True)
 
 @st.cache_data
 def load_data():
@@ -69,6 +55,7 @@ with row1_col1:
     fig1.add_trace(go.Scatter(x=df["Year"], y=df["Total by Firearm"], mode='lines+markers', line=dict(width=3, color="#D75555", shape='spline'), marker=dict(size=8, color="#D75555"), name="Murder by Firearm", hovertemplate="Year: %{x}<br>Murders by Firearm: %{y}<extra></extra>"))
     fig1.update_layout(title="Murders by Firearm in Florida", height=GRAPHIC, margin=MARGINS, template="plotly_white", paper_bgcolor="#FFFFFF", plot_bgcolor="#FFFFFF", font=dict(color="#000000"), legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1), xaxis_title="Year", yaxis_title="Number of Murders")
     fig1.update_xaxes(dtick=1, showgrid=False, tickangle=45, tickvals=df["Year"], color="black") 
+    
     fig1.add_annotation(x=2005, y=521, text="<b>2005:</b><br>Florida enacted<br>'Stand your Ground' law", showarrow=True, arrowhead=2, arrowcolor="black", arrowsize=1, arrowwidth=2, ax=90, ay=30, bordercolor="black", borderwidth=1, borderpad=3, bgcolor="white", font=dict(size=11, color="black"), align="left")
 
     st.plotly_chart(fig1, use_container_width=True, theme=None)
