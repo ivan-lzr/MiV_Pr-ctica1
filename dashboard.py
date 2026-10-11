@@ -3,7 +3,9 @@ import pandas as pd
 import plotly.graph_objects as go
 
 st.set_page_config(page_title="Florida Gun Violence Dashboard", layout="wide")
-st.markdown("""<style>.block-container {padding-top: 1rem; padding-bottom: 0rem;} header {visibility: hidden;} </style>""", unsafe_allow_html=True)
+st.markdown("<style>.block-container {padding-top: 1rem; padding-bottom: 0rem;} header {visibility: hidden;} </style>", unsafe_allow_html=True)
+st.markdown("<style>.stApp { background-color: #FFFFFF; }</style>", unsafe_allow_html=True)
+
 
 @st.cache_data
 def load_data():
@@ -16,7 +18,7 @@ average_percentage = df["Total Percent by Firearms"].mean()
 
 col_title, col_selector = st.columns([3, 1])
 with col_title:
-    st.markdown("<h3 style='margin-bottom: 0px;'> Florida Murder by Firearm Rates ('Stand your Ground' law (2005))</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='margin-bottom: 0px;'> Florida Murders by Firearm Rates ('Stand your Ground' law (2005))</h3>", unsafe_allow_html=True)
 
 with col_selector:
     years  = df["Year"].unique()
@@ -54,9 +56,9 @@ with row1_col1:
     fig1.add_trace(go.Scatter(x=df["Year"], y=df["Total Murders"], mode='lines', line=dict(width=2, color="#837e84", shape='spline'), name="Total Murders", hovertemplate="Year: %{x}<br>Total Murders: %{y}<extra></extra>"))
     fig1.add_trace(go.Scatter(x=df["Year"], y=df["Total by Firearm"], mode='lines+markers', line=dict(width=3, color="#D75555", shape='spline'), marker=dict(size=8, color="#D75555"), name="Murder by Firearm", hovertemplate="Year: %{x}<br>Murders by Firearm: %{y}<extra></extra>"))
     fig1.update_layout(title="Murders by Firearm in Florida", height=GRAPHIC, margin=MARGINS, template="plotly_white", legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1), xaxis_title="Year", yaxis_title="Number of Murders")
-    fig1.update_xaxes(dtick=1, showgrid=False, tickangle=45, tickvals=df["Year"])
+    fig1.update_xaxes(dtick=1, showgrid=False, tickangle=45, tickvals=df["Year"], color="black")
 
-    fig1.add_annotation(x=2005, y=521, text="<b>2005:</b><br>Florida enacted<br>'Stand your Ground' law", showarrow=True, arrowhead=2, arrowcolor="white", arrowsize=1, arrowwidth=2, ax=90, ay=30, bordercolor="black", borderwidth=1, borderpad=3, bgcolor="white", font=dict(size=11, color="black"), align="left")
+    fig1.add_annotation(x=2005, y=521, text="<b>2005:</b><br>Florida enacted<br>'Stand your Ground' law", showarrow=True, arrowhead=2, arrowcolor="black", arrowsize=1, arrowwidth=2, ax=90, ay=30, bordercolor="black", borderwidth=1, borderpad=3, bgcolor="white", font=dict(size=11, color="black"), align="left")
 
     st.plotly_chart(fig1, use_container_width=True)
 
@@ -67,7 +69,7 @@ with row1_col2:
     fig2.update_layout(title="Murder by Firearm Rate per 100,000 population", height=GRAPHIC, margin=MARGINS, template="plotly_white", legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1), xaxis_title="Year", yaxis_title="Murder Rate")
     fig2.update_xaxes(dtick=1, showgrid=False, tickangle=45, tickvals=df["Year"])
     
-    fig2.add_annotation(x=2005, y=2.9, text="<b>2005:</b><br>Florida enacted<br>'Stand your Ground' law", showarrow=True, arrowhead=2, arrowcolor="white", arrowsize=1, arrowwidth=2, ax=90, ay=30, bordercolor="black", borderwidth=1, borderpad=3, bgcolor="white", font=dict(size=11, color="black"), align="left")
+    fig2.add_annotation(x=2005, y=2.9, text="<b>2005:</b><br>Florida enacted<br>'Stand your Ground' law", showarrow=True, arrowhead=2, arrowcolor="black", arrowsize=1, arrowwidth=2, ax=90, ay=30, bordercolor="black", borderwidth=1, borderpad=3, bgcolor="white", font=dict(size=11, color="black"), align="left")
     
     st.plotly_chart(fig2, use_container_width=True)
 
@@ -84,7 +86,7 @@ with row2_col2:
     fig4 = go.Figure()
     colors = ['#d62728' if val > average_percentage else '#ff9896' for val in df["Total Percent by Firearms"]]
     fig4.add_trace(go.Bar(x=df["Year"], y=df["Total Percent by Firearms"], marker_color=colors, hovertemplate="Year: %{x}<br>Murder by Firearm Percentage: %{y} %<extra></extra>"))
-    fig4.add_hline(y=average_percentage, line_dash="dot", line_color="#eef2f4")
+    fig4.add_hline(y=average_percentage, line_dash="dot", line_color="#050404")
     fig4.update_layout(title="% of Murders by Firearm", height=GRAPHIC, margin=MARGINS, template="plotly_white", showlegend=False, xaxis_title="Year", yaxis_title="Percentage")
     st.plotly_chart(fig4, use_container_width=True)
 
